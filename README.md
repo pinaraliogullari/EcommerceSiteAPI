@@ -1,2 +1,2 @@
 # EcommerceSiteAPI
- This is an E Commerce App Api Service developed using ASP.NET Core Web Api
+This is an Api Service for e-commerce application  developed using ASP.NET Core Web API
