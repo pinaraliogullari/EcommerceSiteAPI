@@ -1,6 +1,4 @@
-using EcommerceAPI.Application.Abstractions;
 using ECommerceAPI.Persistence;
-using ECommerceAPI.Persistence.Concretes;
 
 var builder = WebApplication.CreateBuilder(args);
 
