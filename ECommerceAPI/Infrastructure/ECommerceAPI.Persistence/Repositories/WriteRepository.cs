@@ -49,7 +49,9 @@ namespace ECommerceAPI.Persistence.Repositories
 
 		public bool Update(T model)
 		{
-			EntityEntry entityEntry=Table.Update(model);
+			//asenkron olmayan metodu bu şekilde asenkron yapabiliriz.
+			//EntityEntry entityEntry await Task.Run(()=>Table.Update(model));
+			EntityEntry entityEntry =Table.Update(model);
 			return entityEntry.State==EntityState.Modified;
 		}
 		public async Task<int> SaveAsync()
