@@ -11,7 +11,7 @@ namespace ECommerceAPI.Persistence
 	{
 		public static void AddPersistenceServices(this IServiceCollection services)
 		{
-		//DbContextin sahip olduğu yaşam döngüsüne göre  servis repositorylerini ıoc ye ekledi.(addscoped)
+		//DbContextin sahip olduğu yaşam döngüsüne göre  servis repositoryleri ıoc ye eklendi.(addscoped)
 			services.AddDbContext<ECommerceDbContext>(options => options.UseNpgsql(Configuration.ConnectionString));
 			services.AddScoped<ICustomerReadRepository,CustomerReadRepository>();
 			services.AddScoped<ICustomerWriteRepository,CustomerWriteRepository>();
