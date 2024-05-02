@@ -1,4 +1,6 @@
+using EcommerceAPI.Application.Validators.Products;
 using ECommerceAPI.Persistence;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +9,11 @@ builder.Services.AddPersistenceServices();
 //herhangibir yerden gelen isteðe izin vermek istersek;
 //builder.Services.AddCors(options=>options.AddDefaultPolicy(policy=>policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy => policy.WithOrigins("buraya ui tarafýnýn adresini yazacaðým(hem http hem https olaný").AllowAnyHeader().AllowAnyMethod()));
-builder.Services.AddControllers();
+
+builder.Services.AddControllers()
+	.AddFluentValidation(configuration=>configuration.RegisterValidatorsFromAssemblyContaining<ProductCreateValidator>())
+	.ConfigureApiBehaviorOptions(options=>options.SuppressModelStateInvalidFilter=true);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
