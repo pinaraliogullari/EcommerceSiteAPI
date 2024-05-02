@@ -1,4 +1,5 @@
 using EcommerceAPI.Application.Validators.Products;
+using ECommerceAPI.Infrastructure.Filters;
 using ECommerceAPI.Persistence;
 using FluentValidation.AspNetCore;
 
@@ -10,7 +11,7 @@ builder.Services.AddPersistenceServices();
 //builder.Services.AddCors(options=>options.AddDefaultPolicy(policy=>policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy => policy.WithOrigins("buraya ui tarafýnýn adresini yazacaðým(hem http hem https olaný").AllowAnyHeader().AllowAnyMethod()));
 
-builder.Services.AddControllers()
+builder.Services.AddControllers(options=>options.Filters.Add<ValidationFilter>())
 	.AddFluentValidation(configuration=>configuration.RegisterValidatorsFromAssemblyContaining<ProductCreateValidator>())
 	.ConfigureApiBehaviorOptions(options=>options.SuppressModelStateInvalidFilter=true);
 
